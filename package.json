@@ -1,0 +1,81 @@
+{
+  "name": "fosscode",
+  "displayName": "FOSSCode",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.82.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AleksanderBondar/hackathon-1"
+  },
+  "icon": "media/icon.png",
+  "galleryBanner": {
+    "color": "#C80000",
+    "theme": "dark"
+  },
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "fosscode-sidebar-view",
+          "title": "FOSSCode",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "fosscode-sidebar-view": [
+        {
+          "type": "webview",
+          "id": "fosscode-sidebar",
+          "name": "FOSSCode",
+          "icon": "media/icon.svg",
+          "contextualTitle": "FOSSCode"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "fosscode.generateReadme",
+        "title": "FOSSCode: Generate Readme"
+      },
+      {
+        "command": "fosscode.loginToGitHub",
+        "title": "FOSSCode: Login to GitHub"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js",
+    "ext": "vsce package"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.82.0",
+    "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@typescript-eslint/parser": "^6.4.1",
+    "@vscode/test-electron": "^2.3.4",
+    "eslint": "^8.47.0",
+    "glob": "^10.3.3",
+    "mocha": "^10.2.0",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "@octokit/rest": "^20.0.1"
+  }
+}
